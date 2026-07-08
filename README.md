@@ -1,5 +1,7 @@
 # Tray Nest
 
+<img src="icons/traynest-logo.svg" alt="Tray Nest logo" width="128" height="128">
+
 Tray Nest adds AppIndicator, KStatusNotifierItem (KDE's systray successor) and
 legacy X11 tray icon support to the GNOME Shell panel — a friendly fork of
 [gnome-shell-extension-appindicator](https://github.com/ubuntu/gnome-shell-extension-appindicator)
