@@ -9,7 +9,8 @@
     ],
     "gettext-domain": "TrayNestExtension",
     "settings-schema": "org.gnome.shell.extensions.traynest",
-    "uuid": "traynest@local",
+    "uuid": "traynest@mrzh4s.github.io",
     "name": "Tray Nest",
-    "description": "AppIndicator, KStatusNotifierItem and legacy tray icon support for GNOME Shell — with icon grouping, per-indicator visibility/ordering/click overrides, per-indicator color and appearance customization, and a bundled icon picker. A friendly fork of gnome-shell-extension-appindicator."
+    "description": "AppIndicator, KStatusNotifierItem and legacy tray icon support for GNOME Shell — with icon grouping, per-indicator visibility/ordering/click overrides, per-indicator color and appearance customization, and a bundled icon picker. A friendly fork of gnome-shell-extension-appindicator.",
+    "url": "https://github.com/mrzh4s/traynest"
 }

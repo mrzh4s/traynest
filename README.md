@@ -39,11 +39,11 @@ Added by Tray Nest:
 This fork isn't published on extensions.gnome.org — install it from source:
 
 ```bash
-git clone <this-repository-url>
-cd tray-nest
+git clone https://github.com/mrzh4s/traynest.git
+cd traynest
 meson setup _build
 ninja -C _build install
-gnome-extensions enable traynest@local
+gnome-extensions enable traynest@mrzh4s.github.io
 ```
 
 Under X11, restart GNOME Shell afterwards (<kbd>Alt</kbd>+<kbd>F2</kbd>,
