@@ -1,0 +1,6 @@
+build
+_build
+schemas/gschemas.compiled
+*.mo
+*.zip
+.claude/

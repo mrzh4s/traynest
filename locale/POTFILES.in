@@ -1,0 +1,5 @@
+prefs.js
+preferences/generalPage.js
+preferences/indicatorsPage.js
+preferences/appearancePage.js
+schemas/org.gnome.shell.extensions.traynest.gschema.xml
