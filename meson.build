@@ -42,8 +42,6 @@ js_sources = run_command(sh, '-c', ls_cmd.format('*.js')).stdout().strip().split
 install_data(metadata,
     files(js_sources),
     install_dir: extension_dir)
-install_data(files('tools/busAnalyzer.js'),
-    install_dir: extension_dir / 'tools')
 install_subdir('interfaces-xml',
     install_dir: extension_dir)
 install_subdir('preferences',
