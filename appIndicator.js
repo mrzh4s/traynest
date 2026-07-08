@@ -1639,8 +1639,8 @@ class AppIndicatorsIconActor extends St.Icon {
 
     _updateIconSize() {
         const settings = SettingsManager.getDefaultGSettings();
-        const override = this._indicator ?
-            Util.getIndicatorOverride(this._indicator.uniqueId, 'icon-size-overrides') : null;
+        const override = this._indicator
+            ? Util.getIndicatorOverride(this._indicator.uniqueId, 'icon-size-overrides') : null;
         const sizeValue = override !== null ? override : settings.get_int('icon-size');
 
         if (sizeValue > 0) {

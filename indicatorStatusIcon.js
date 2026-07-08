@@ -96,8 +96,8 @@ function parseHexColor(hex) {
 // Perceived luminance (ITU-R BT.601) of the panel background, 0 (black) to
 // 255 (white), or null if it can't be determined (e.g. panel not yet mapped).
 function getPanelBackgroundLuminance() {
-    const color = Main.panel?.get_parent() ?
-        Main.panel.get_theme_node()?.get_background_color() : null;
+    const color = Main.panel?.get_parent()
+        ? Main.panel.get_theme_node()?.get_background_color() : null;
 
     if (!color)
         return null;
@@ -330,8 +330,8 @@ class IndicatorBaseStatusIcon extends PanelMenu.Button {
         const override = Util.getIndicatorOverride(this.uniqueId, 'icon-saturation-overrides');
         // A resolved tint only reads as a clean, single-color recolor if the
         // icon is fully desaturated first.
-        const desaturationValue = this._getResolvedTintColor() ? 1.0 :
-            (override !== null ? override : settings.get_double('icon-saturation'));
+        const baseSaturation = override !== null ? override : settings.get_double('icon-saturation');
+        const desaturationValue = this._getResolvedTintColor() ? 1.0 : baseSaturation;
         let desaturateEffect = this._icon.get_effect('desaturate');
 
         if (desaturationValue > 0) {
@@ -377,10 +377,10 @@ class IndicatorBaseStatusIcon extends PanelMenu.Button {
         const settings = SettingsManager.getDefaultGSettings();
         const brightnessOverride = Util.getIndicatorOverride(this.uniqueId, 'icon-brightness-overrides');
         const contrastOverride = Util.getIndicatorOverride(this.uniqueId, 'icon-contrast-overrides');
-        const brightnessValue = brightnessOverride !== null ?
-            brightnessOverride : settings.get_double('icon-brightness');
-        const contrastValue = contrastOverride !== null ?
-            contrastOverride : settings.get_double('icon-contrast');
+        const brightnessValue = brightnessOverride !== null
+            ? brightnessOverride : settings.get_double('icon-brightness');
+        const contrastValue = contrastOverride !== null
+            ? contrastOverride : settings.get_double('icon-contrast');
         let brightnessContrastEffect = this._icon.get_effect('brightness-contrast');
 
         if (brightnessValue !== 0 | contrastValue !== 0) {
