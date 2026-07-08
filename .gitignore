@@ -4,3 +4,4 @@ schemas/gschemas.compiled
 *.mo
 *.zip
 .claude/
+CLAUDE.md
