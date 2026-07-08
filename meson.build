@@ -76,6 +76,7 @@ if local_install
                 'env DESTDIR="$tmp_path" ninja -C $MESON_BUILD_ROOT install',
                 'cd "$tmp_path/@0@"'.format(extension_dir),
                 'rm -f "$zip_file"',
+                'rm -f schemas/gschemas.compiled',
                 'zip -r "$zip_file" .',
             ])
         ])

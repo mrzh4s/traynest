@@ -34,30 +34,19 @@ export default class TrayNestExtension extends Extension.Extension {
 
         this._isEnabled = false;
         this._statusNotifierWatcher = null;
-        this._watchDog = new Util.NameWatcher(StatusNotifierWatcher.WATCHER_BUS_NAME);
-        this._watchDogId = this._watchDog.connect('vanished',
-            () => this._maybeEnableAfterNameAvailable());
-
-        // HACK: we want to leave the watchdog alive when disabling the extension,
-        // but if we are being reloaded, we destroy it since it could be considered
-        // a leak and spams our log, too.
-        /* eslint-disable no-undef */
-        if (typeof global['--appindicator-extension-on-reload'] === 'function')
-            global['--appindicator-extension-on-reload']();
-
-        global['--appindicator-extension-on-reload'] = () => {
-            Logger.debug('Reload detected, destroying old watchdog');
-            this._watchDog.disconnect(this._watchDogId);
-            this._watchDog.destroy();
-            this._watchDog = null;
-        };
-        /* eslint-enable no-undef */
+        this._watchDog = null;
+        this._watchDogId = null;
     }
 
     enable() {
         this._isEnabled = true;
         SettingsManager.initialize(this);
         Util.tryCleanupOldIndicators();
+
+        this._watchDog = new Util.NameWatcher(StatusNotifierWatcher.WATCHER_BUS_NAME);
+        this._watchDogId = this._watchDog.connect('vanished',
+            () => this._maybeEnableAfterNameAvailable());
+
         this._maybeEnableAfterNameAvailable();
         TrayIconsManager.TrayIconsManager.initialize();
         IndicatorGroupManager.IndicatorGroupManager.initialize();
@@ -73,6 +62,13 @@ export default class TrayNestExtension extends Extension.Extension {
         if (this._statusNotifierWatcher !== null) {
             this._statusNotifierWatcher.destroy();
             this._statusNotifierWatcher = null;
+        }
+
+        if (this._watchDog !== null) {
+            this._watchDog.disconnect(this._watchDogId);
+            this._watchDog.destroy();
+            this._watchDog = null;
+            this._watchDogId = null;
         }
 
         SettingsManager.destroy();

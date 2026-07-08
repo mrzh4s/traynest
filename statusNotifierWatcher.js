@@ -349,7 +349,6 @@ export class StatusNotifierWatcher {
         DBusProxy.destroy();
         Util.destroyDefaultTheme();
 
-        this._dbusImpl.run_dispose();
         delete this._dbusImpl;
 
         delete this._items;
